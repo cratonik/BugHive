@@ -3,7 +3,7 @@
 [![Stars](https://img.shields.io/github/stars/bughive?style=social)](https://github.com/cratonik/bughive)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![React](https://img.shields.io/badge/Frontend-React-61DAFB.svg)](https://reactjs.org/)
-[![Node](https://img.shields.io/badge/Backend-Node-43853D.svg)](https://nodejs.org/)
+[![Node](https://img.shields.io/badge/Backend-Springboot-43853D.svg)](https://nodejs.org/)
 [![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248.svg)](https://mongodb.com/)
 
 **BugHive TrackIt** is a full-stack bug tracking and project management system built with MERN stack. Project managers create projects and log bugs, developers get assigned tasks with status tracking, and admins oversee everything through role-specific dashboards.
