@@ -3,7 +3,7 @@ package com.bughive.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name= "issues")
@@ -39,5 +39,5 @@ public class Issue {
     private User assignee; // nullable
 
     @Column(nullable = false, updatable = false)
-    private Instant createdAt = Instant.now();
+    private LocalDateTime createdAt;
 }
