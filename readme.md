@@ -63,6 +63,14 @@ npm install
 npm run dev
 ```
 
+### Database
+## PostgresDB
+- Install Docker Desktop
+- Run below command in terminal
+```
+docker run --name bughive -e POSTGRES_DB=bughive -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres:16-alpine
+```
+
 
 
 
