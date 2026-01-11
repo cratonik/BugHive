@@ -9,17 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.sql.DataSource;
 
-//@RestController
-//public class HealthController {
-//
-//    @GetMapping("/health")
-//    public Map<String, String> health() {
-//        Map<String, String> response = new HashMap<>();
-//        response.put("status", "Backend ready");
-//        response.put("db", "PostgreSQL connected");
-//        return response;
-//    }
-//}
 @RestController
 public class HealthController {
 
