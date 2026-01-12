@@ -1,6 +1,6 @@
 package com.bughive.entity;
 
-public enum IssuePriority {
+public enum Priority {
     LOW,
     MEDIUM,
     HIGH,
