@@ -11,16 +11,3 @@ export const fetchIssuesByProjectId = async (projectId) => {
     }
     return [];
 }
-//fetchProjectById (id)
-// Add route: path="/projects/:id" element={}.
-
-export const fetchProjectById = async (id) => {
-    try {
-        const response = await apiClient.get(`/projects/${id}`);
-        return response.data;
-    }
-    catch (error) {
-        console.error(`Error fetching project with id ${id}:`, error);
-    }
-    return null;
-}
