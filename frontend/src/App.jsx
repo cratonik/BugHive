@@ -5,6 +5,7 @@ import Error404 from './pages/Error404'
 import './App.css'
 import Header from './components/Header'
 import ProjectPage from './pages/ProjectPage'
+import ProjectsListPage from './pages/ProjectListPage'
 
 function App() {
  
@@ -15,9 +16,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
-         <Route path='/projects' element={<ProjectPage />} />
+        <Route path='/projects' element={<ProjectsListPage />} />
         <Route path='*' element={<Error404 />} />
-        
+        <Route path="/projects/:id" element={<ProjectPage />} />
       </Routes>
 
       
