@@ -1,33 +1,37 @@
 package com.bughive.service;
 
+import com.bughive.dto.ProjectResponse;
 import com.bughive.entity.Project;
+import com.bughive.mapper.ProjectMapper;
 import com.bughive.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class ProjectService {
-//    createProject(Project project)
-//    getAllProjects()
-//    getProjectById(Long id)
-
     private final ProjectRepository projectRepository;
+    private final ProjectMapper projectMapper;
 
-    public Project createProject(Project project){
-        if (project.getCreatedAt() == null) {
-            project.setCreatedAt(java.time.LocalDateTime.now());
+//    createProject
+    public ProjectResponse createProject(Project project){
+        if(project.getCreatedAt() == null){
+            project.setCreatedAt(LocalDateTime.now());
         }
-        return projectRepository.save(project);
+        return projectMapper.toDto(projectRepository.save(project));
     }
-    public List<Project> getAllProjects(){
-        return projectRepository.findAll();
+//    getAllProjects
+    public List<ProjectResponse> getAllProjects() {
+        return projectRepository.findAllWithCreator()
+                .stream()
+                .map(projectMapper::toDto)
+                .toList();
     }
 
-    public Optional<Project> getProjectById(Long id){
-        return projectRepository.findById(id);
+    public ProjectResponse getProject(Long id) {
+        return projectMapper.toDto(projectRepository.findByIdWithCreator(id));
     }
 }
