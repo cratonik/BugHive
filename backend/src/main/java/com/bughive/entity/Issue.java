@@ -7,7 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name= "issues")
+@Table(name = "issues")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -41,6 +41,9 @@ public class Issue {
     @Column(name = "created_at", nullable = false, updatable = false)
     @CreationTimestamp
     private LocalDateTime createdAt;
+
+
+
 
     // Timestamps are set automatically. Before this entity is Inserted into the database for the first time, run this method.
     @PrePersist
