@@ -1,7 +1,9 @@
 package com.bughive.mapper;
 
+import com.bughive.dto.ProjectRequest;
 import com.bughive.dto.ProjectResponse;
 import com.bughive.entity.Project;
+import com.bughive.entity.User;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -20,4 +22,14 @@ public class ProjectMapper {
         }
         return dto;
     }
+
+    public Project toEntity(ProjectRequest request, User createdBy) {
+        Project project = new Project();
+        project.setName(request.getName());
+        project.setDescription(request.getDescription());
+        project.setCreatedBy(createdBy);
+        return project;
+    }
+
+
 }
