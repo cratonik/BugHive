@@ -6,12 +6,13 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name= "issues")
 @Data
+@Entity
+@Table(name = "issues")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString(exclude = {"project", "assignee"})
 public class Issue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
