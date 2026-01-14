@@ -1,9 +1,12 @@
 package com.bughive.service;
 
+import com.bughive.dto.ProjectRequest;
 import com.bughive.dto.ProjectResponse;
 import com.bughive.entity.Project;
+import com.bughive.entity.User;
 import com.bughive.mapper.ProjectMapper;
 import com.bughive.repository.ProjectRepository;
+import com.bughive.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +18,18 @@ import java.util.List;
 public class ProjectService {
     private final ProjectRepository projectRepository;
     private final ProjectMapper projectMapper;
+    private final UserRepository userRepository;
 
 //    createProject
-    public ProjectResponse createProject(Project project){
-        if(project.getCreatedAt() == null){
-            project.setCreatedAt(LocalDateTime.now());
-        }
-        return projectMapper.toDto(projectRepository.save(project));
-    }
+public ProjectResponse createProject(ProjectRequest request) {
+    User user = userRepository.findById(request.getCreatedById())
+            .orElseThrow(() -> new RuntimeException("User not found"));
+
+    Project project = projectMapper.toEntity(request, user);
+    Project saved = projectRepository.save(project);
+
+    return projectMapper.toDto(saved);
+}
 //    getAllProjects
     public List<ProjectResponse> getAllProjects() {
         return projectRepository.findAllWithCreator()

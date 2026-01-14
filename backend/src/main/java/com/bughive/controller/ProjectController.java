@@ -1,10 +1,11 @@
 package com.bughive.controller;
 
+import com.bughive.dto.ProjectRequest;
 import com.bughive.dto.ProjectResponse;
-import com.bughive.entity.Project;
 import com.bughive.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,9 +18,13 @@ public class ProjectController {
     private final ProjectService projectService;
 
     @PostMapping
-    public ResponseEntity<ProjectResponse> createProject(@Valid @RequestBody Project project) {
-        return ResponseEntity.ok(projectService.createProject(project));
+    public ResponseEntity<ProjectResponse> createProject(
+            @Valid @RequestBody ProjectRequest request
+    ) {
+        ProjectResponse response = projectService.createProject(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+
 
     @GetMapping
     public ResponseEntity<List<ProjectResponse>> getAllProjects() {
