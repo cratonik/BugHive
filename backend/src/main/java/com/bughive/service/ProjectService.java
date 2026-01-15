@@ -20,21 +20,21 @@ public class ProjectService {
     private final ProjectMapper projectMapper;
     private final UserRepository userRepository;
 
-//    createProject
-public ProjectResponse createProject(ProjectRequest request) {
-    User user = userRepository.findById(request.getCreatedById())
-            .orElseThrow(() -> new RuntimeException("User not found"));
+    // createProject
+    public ProjectResponse createProject(ProjectRequest request) {
+        User user = userRepository.findById(request.getCreatedById())
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
-    Project project = projectMapper.toEntity(request, user);
-    Project saved = projectRepository.save(project);
+        Project project = projectMapper.toEntity(request, user);
+        Project saved = projectRepository.save(project);
 
-    return projectMapper.toDto(saved);
-}
-//    getAllProjects
+        return projectMapper.toDto(saved);
+    }
+
+    // getAllProjects
     public List<ProjectResponse> getAllProjects() {
-        return projectRepository.findAllWithCreator()
-                .stream()
-                .map(projectMapper::toDto)
+        return projectRepository.findAllProjectsWithIssueCounts().stream()
+                .map(row -> projectMapper.toDto((Project) row[0], (Long) row[1]))
                 .toList();
     }
 
