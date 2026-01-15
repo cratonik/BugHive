@@ -13,13 +13,6 @@ const ProjectsListPage = () => {
         const loadData = async () => {
             const projectData = await fetchProjects();
             setProjects(projectData);
-
-            const counts = {};
-            for (const project of projectData) {
-                const issues = await fetchIssuesByProjectId(project.id);
-                counts[project.id] = issues.length;
-            }
-            setIssueCounts(counts);
         };
 
         loadData();
@@ -41,8 +34,8 @@ const ProjectsListPage = () => {
                                 {project.name}
                             </h2>
 
-                            <span className="bg-primary text-white text-sm px-3 py-1 rounded-full">
-                                {issueCounts[project.id] || 0} issues
+                            <span className="bg-primary text-black text-sm px-3 py-1 rounded-full">
+                                {project.issueCount || 0} issues
                             </span>
                         </div>
 
