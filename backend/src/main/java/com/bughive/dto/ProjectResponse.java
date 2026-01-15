@@ -13,5 +13,6 @@ public class ProjectResponse {
     private Long createdById;
     private String createdByName;
 
+    private Long issueCount;
     private LocalDateTime createdAt;
 }

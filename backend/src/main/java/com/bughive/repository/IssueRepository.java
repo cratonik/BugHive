@@ -11,12 +11,20 @@ import java.util.Optional;
 public interface IssueRepository extends JpaRepository<Issue, Long> {
     List<Issue> findByProjectIdOrderByCreatedAtDesc(Long projectId);
 
-//    @Query("""
-//        SELECT i FROM Issue i
-//        JOIN FETCH i.project p
-//        LEFT JOIN FETCH i.assignee a
-//        WHERE i.id = :id
-//    """)
-//Optional<Issue> findIssueById(@Param("id") Long id);
-Optional<Issue> findIssueById( Long id);
+    @Query("""
+                SELECT i FROM Issue i
+                JOIN FETCH i.project
+                LEFT JOIN FETCH i.assignee
+                WHERE i.project.id = :projectId
+                ORDER BY i.createdAt DESC
+            """)
+    List<Issue> findAllByProjectId(@Param("projectId") Long projectId);
+
+    @Query("""
+                SELECT i FROM Issue i
+                JOIN FETCH i.project
+                LEFT JOIN FETCH i.assignee
+                WHERE i.id = :id
+            """)
+    Optional<Issue> findIssueById(@Param("id") Long id);
 }

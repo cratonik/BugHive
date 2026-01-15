@@ -75,6 +75,7 @@ const ProjectPage = () => {
                         <h3 className="font-semibold text-text">
                             {issue.title}
                         </h3>
+                        <p className="text-sm text-gray-500">{issue.description}</p>
                         <p className="text-muted text-sm mt-1">
                             {issue.status} • {issue.priority}
                         </p>

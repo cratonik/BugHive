@@ -15,6 +15,7 @@ public class ProjectMapper {
         dto.setName(p.getName());
         dto.setDescription(p.getDescription());
         dto.setCreatedAt(p.getCreatedAt());
+        dto.setIssueCount(p.getIssueCount());
 
         if (p.getCreatedBy() != null) {
             dto.setCreatedById(p.getCreatedBy().getId());
@@ -30,6 +31,5 @@ public class ProjectMapper {
         project.setCreatedBy(createdBy);
         return project;
     }
-
 
 }

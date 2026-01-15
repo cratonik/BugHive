@@ -31,4 +31,7 @@ public class Project {
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
+
+    @org.hibernate.annotations.Formula("(SELECT count(*) FROM issues i WHERE i.project_id = id)")
+    private Long issueCount;
 }
