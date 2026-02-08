@@ -8,7 +8,7 @@
 
 **BugHive TrackIt** is a full-stack bug tracking and project management system. **Frontend**: React.js | **Backend**: Spring Boot REST API | **Database**: PostgreSQL (users/projects/issues) + MongoDB (comments/activity).
 
-Project managers create projects and log bugs, developers handle assignments with status workflow (Open → In Progress → Review → Done), admins get overview dashboards.
+Project managers create projects and log bugs, developers handle assignments with status workflow (Open → In Progress → Review → Done), admins get overview dashboards. 
 
 ## ✨ Features
 
